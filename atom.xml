@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>shane00413-wq</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://shane00413-wq.github.io/</id>
+  <link href="https://shane00413-wq.github.io/" rel="alternate"/>
+  <link href="https://shane00413-wq.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, shane00413-wq</rights>
+  <subtitle>shane.00413@gmail.com</subtitle>
+  <title>谢恩的博客</title>
+  <updated>2026-06-21T09:02:25.656Z</updated>
+  <entry>
+    <author>
+      <name>shane00413-wq</name>
+    </author>
+    <content>
+      <![CDATA[<p>你们好 我是谢恩 这是我的第一篇博客</p>]]>
+    </content>
+    <id>https://shane00413-wq.github.io/2026/06/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://shane00413-wq.github.io/2026/06/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <published>2026-06-21T01:01:27.000Z</published>
+    <summary>
+      <![CDATA[<p>你们好 我是谢恩 这是我的第一篇博客</p>]]>
+    </summary>
+    <title>我的第一篇博客</title>
+    <updated>2026-06-21T09:02:25.656Z</updated>
+  </entry>
+</feed>
