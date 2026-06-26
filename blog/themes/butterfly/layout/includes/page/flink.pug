@@ -57,26 +57,28 @@
       if site.data.link
         - let result = ""
         each i in site.data.link
-          - let className = i.class_name ? markdown(`## ${i.class_name}`) : ""
-          - let classDesc = i.class_desc ? `<div class="flink-desc">${i.class_desc}</div>` : ""
+          if i
+            - const replaceSymbol = (str) => { return String(str).replace(/[^\w\-\u4e00-\u9fa5]+/g, '-') }
+            - let className = i.class_name ? `<h2 id="${replaceSymbol(i.class_name)}"><a href="#${replaceSymbol(i.class_name)}" class="headerlink" title="${i.class_name}"></a>${i.class_name}</h2>` : ""
+            - let classDesc = i.class_desc ? `<div class="flink-desc">${i.class_desc}</div>` : ""
 
-          - let listResult = ""
+            - let listResult = ""
 
-          each j in i.link_list
-            -
-              listResult += `
-                <div class="flink-list-item">
-                  <a href="${j.link}" title="${j.name}" target="_blank">
-                    <div class="flink-item-icon">
-                      <img class="no-lightbox" src="${j.avatar}" onerror='this.onerror=null;this.src="${url_for(theme.error_img.flink)}"' alt="${j.name}" />
-                    </div>
-                    <div class="flink-item-name">${j.name}</div>
-                    <div class="flink-item-desc" title="${j.descr}">${j.descr}</div>
-                  </a>
-                </div>`
-            -
+            each j in i.link_list
+              -
+                listResult += `
+                  <div class="flink-list-item">
+                    <a href="${j.link}" title="${j.name}" target="_blank">
+                      <div class="flink-item-icon">
+                        <img class="no-lightbox" src="${j.avatar}" onerror='this.onerror=null;this.src="${url_for(theme.error_img.flink)}"' alt="${j.name}" />
+                      </div>
+                      <div class="flink-item-name">${j.name}</div>
+                      <div class="flink-item-desc" title="${j.descr}">${j.descr}</div>
+                    </a>
+                  </div>`
+              -
 
-          - result += `${className}${classDesc} <div class="flink-list">${listResult}</div>`
+            - result += `${className}${classDesc} <div class="flink-list">${listResult}</div>`
 
         - pageContent = result + pageContent
     != pageContent
