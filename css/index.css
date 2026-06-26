@@ -179,7 +179,6 @@ template {
   display: none
 }
 .limit-one-line,
-.container .flink .flink-item-name,
 .container .flink .flink-item-desc,
 #aside-content .card-archives ul.card-archive-list > .card-archive-list-item a span,
 #aside-content .card-categories ul.card-category-list > .card-category-list-item a span,
@@ -2586,10 +2585,20 @@ figure.highlight pre .javascript .function {
   display: none;
 }
 .container .flink .flink-item-name {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
   padding: 16px 10px 0 0;
   height: 40px;
   font-weight: bold;
   font-size: 1.43em;
+}
+.container .flink .flink-item-name::-webkit-scrollbar {
+  height: 4px;
+}
+.container .flink .flink-item-name::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 2px;
 }
 .container .flink .flink-item-desc {
   padding: 16px 10px 16px 0;
