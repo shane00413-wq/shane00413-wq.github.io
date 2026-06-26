@@ -1,0 +1,12 @@
+
+local_search:
+  enable: true
+  path: search.xml
+  field: post
+  content: true
+
+local_search:
+  enable: true
+  path: search.xml
+  field: post
+  content: true

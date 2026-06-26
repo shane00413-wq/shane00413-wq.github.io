@@ -1,0 +1,22 @@
+# 友链数据文件，可直接编辑此文件来添加或修改友链
+# 支持多个分组，例如社交、博客、工具等
+# 字段说明：
+#   class_name: 分组标题
+#   class_desc: 分组说明
+#   link_list:
+#     - name: 链接名称
+#       link: URL
+#       avatar: 图片 URL
+#       descr: 描述
+
+- class_name: 推荐博客
+  class_desc: 站主朋友博客
+  link_list:
+    - name: 苏楼龙（自由的溥仪）博客
+      link: https://blog.suloulong.ccwu.cc
+      avatar: /img/friend_404.gif
+      descr: 这是站主朋友的博客
+    - name: 滴滴批发网
+      link: https://didipifa.com
+      avatar: /img/friend_404.gif
+      descr: 站主推荐的telegram接码网站 比较便宜 并且不需要外币

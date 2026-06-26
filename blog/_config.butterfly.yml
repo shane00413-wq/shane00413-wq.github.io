@@ -1,0 +1,190 @@
+# --------------------------------------
+# Hexo Butterfly Theme FULL CONFIG
+# --------------------------------------
+
+nav:
+  display_post_title: true
+  fixed: false
+  search: true
+  search_placeholder: 在此搜索文章
+menu:
+  首页: / || fas fa-home
+  时间轴: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  留言板: /message/ || fas fa-comment
+  照片: /Gallery/ || fas fa-images    
+  友链: /link/ || fas fa-link
+  关于: /about/ || fas fa-heart
+
+# --------------------------------------
+# 搜索
+# --------------------------------------
+search:
+  use: local_search
+  placeholder: 在此输入关键词搜索文章
+
+# --------------------------------------
+# 侧边栏
+# --------------------------------------
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+
+  card_author:
+    enable: true
+    description: "搞机圈玩家"
+    button:
+      enable: true
+      icon: fab fa-github
+      text: Follow Me
+      link: https://github.com/xxxxxx
+
+  card_announcement:
+    enable: true
+    content: |
+      自我介绍：<br>
+      我是谢恩，是一个搞机圈玩家。<br><br>
+      联系方式：<br>
+      QQ: 3514143296<br>
+      Telegram: Shane_0413
+
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+
+  card_categories:
+    enable: true
+    limit: 8
+
+  card_tags:
+    enable: true
+    limit: 40
+    orderby: random
+
+  card_archives:
+    enable: true
+    type: monthly
+    limit: 8
+
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+
+# --------------------------------------
+# 代码块
+# --------------------------------------
+code_blocks:
+  theme: light
+  copy: true
+  language: true
+  shrink: false
+
+# --------------------------------------
+# 图片
+# --------------------------------------
+favicon: /img/favicon.png
+
+avatar:
+  img: /img/butterfly-icon.png
+
+disable_top_img: false
+
+# --------------------------------------
+# 文章信息
+# --------------------------------------
+post_meta:
+  page:
+    date_type: created
+    categories: true
+  post:
+    date_type: both
+    categories: true
+    tags: true
+
+index_layout: 3
+
+index_post_content:
+  method: 3
+  length: 500
+
+# --------------------------------------
+# TOC
+# --------------------------------------
+toc:
+  post: true
+  number: true
+  scroll_percent: true
+
+# --------------------------------------
+# Footer
+# --------------------------------------
+footer:
+  owner:
+    enable: true
+    since: 2025
+  copyright:
+    enable: true
+    version: true
+
+# --------------------------------------
+# 相关文章
+# --------------------------------------
+related_post:
+  enable: true
+  limit: 6
+
+post_pagination: 1
+
+# --------------------------------------
+# 暗黑模式
+# --------------------------------------
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: false
+
+# --------------------------------------
+# 复制
+# --------------------------------------
+copy:
+  enable: true
+
+# --------------------------------------
+# 浏览统计
+# --------------------------------------
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+# --------------------------------------
+# 评论系统（你自己填API）
+# --------------------------------------
+comments:
+  use: Giscus
+  text: true
+  lazyload: false
+  count: false
+giscus:
+  repo: "shane00413-wq/shaneblog-giscus"
+  repo_id: "R_kgDOTE5qdw"
+  category: "General"
+  category_id: "DIC_kwDOTE5qd84C_3b_"
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+  theme: preferred_color_scheme
+  lang: zh-CN
+  
