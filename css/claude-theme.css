@@ -1,0 +1,151 @@
+/* ============================================================
+   Claude 风格主题 — 为 Hexo Butterfly 定制
+   暖调奶油背景 + 赭橙强调色，安静、克制、有阅读感
+   ============================================================ */
+
+:root {
+  /* —— 色板 —— */
+  --claude-bg:        #F5F2EA;   /* 奶油背景 */
+  --claude-bg-card:   #FBFAF6;   /* 卡片背景，比背景略亮 */
+  --claude-ink:        #2B2722;   /* 正文深棕黑 */
+  --claude-ink-soft:   #6E665C;   /* 次要文字，柔和灰棕 */
+  --claude-accent:     #C2603F;   /* 赭橙主色 */
+  --claude-accent-dim: #A84F34;   /* 赭橙 hover/深色 */
+  --claude-line:       #E4DCC9;   /* 分隔线/边框 */
+  --claude-code-bg:    #2B2722;   /* 代码块深色背景 */
+}
+
+/* —— 整体背景与正文 —— */
+body {
+  background: var(--claude-bg) !important;
+  color: var(--claude-ink) !important;
+}
+
+#web_bg {
+  background: var(--claude-bg) !important;
+}
+
+/* 正文字体：保留系统无衬线，标题换成带文学气质的衬线 */
+h1, h2, h3, h4, h5, h6,
+#site-title,
+.post-title {
+  font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, serif !important;
+  font-weight: 600 !important;
+  color: var(--claude-ink) !important;
+  letter-spacing: 0.01em;
+}
+
+/* —— 卡片：文章列表、侧栏、友链卡片统一质感 —— */
+#recent-posts > .recent-post-item,
+#aside-content .card-widget,
+.author-content,
+.tag_share,
+#post-comment,
+.links_card .link-item {
+  background: var(--claude-bg-card) !important;
+  border: 1px solid var(--claude-line) !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+#recent-posts > .recent-post-item:hover,
+.links_card .link-item:hover {
+  border-color: var(--claude-accent) !important;
+  transform: translateY(-2px);
+}
+
+/* —— 链接：下划线常驻，更克制，不靠纯变色 —— */
+.post-content a:not(.button):not(.fancybox) {
+  color: var(--claude-accent) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--claude-line);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.post-content a:not(.button):not(.fancybox):hover {
+  color: var(--claude-accent-dim) !important;
+  text-decoration-color: var(--claude-accent);
+}
+
+/* —— 按钮 / 强调元素 —— */
+#nav,
+.post-meta,
+.tag-cloud-tags a:hover {
+  color: var(--claude-ink-soft);
+}
+
+.btn-text,
+#nav .site-page:hover,
+.post-title:hover {
+  color: var(--claude-accent) !important;
+}
+
+/* —— 引用块：左侧粗色条，告白克制 —— */
+.post-content blockquote {
+  background: var(--claude-bg-card) !important;
+  border-left: 4px solid var(--claude-accent) !important;
+  border-radius: 6px;
+  color: var(--claude-ink-soft) !important;
+  padding: 0.8em 1.2em;
+}
+
+/* —— 代码块：深色，与暖背景形成温和对比 —— */
+.post-content figure.highlight,
+.post-content pre {
+  background: var(--claude-code-bg) !important;
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+.post-content code {
+  background: rgba(194, 96, 63, 0.12) !important;
+  color: var(--claude-accent-dim) !important;
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+
+/* —— 分隔线 —— */
+hr {
+  border-top: 1px solid var(--claude-line) !important;
+}
+
+/* —— 标签 / 分类胶囊 —— */
+.post-meta .post-meta-categories a,
+.tag_share a {
+  border: 1px solid var(--claude-line);
+  border-radius: 999px;
+  padding: 2px 10px;
+  color: var(--claude-ink-soft) !important;
+}
+
+.post-meta .post-meta-categories a:hover,
+.tag_share a:hover {
+  border-color: var(--claude-accent);
+  color: var(--claude-accent) !important;
+}
+
+/* —— 公告 / 个人信息卡片头像描边 —— */
+.author-content .author-img img {
+  border: 3px solid var(--claude-bg) !important;
+  outline: 2px solid var(--claude-accent);
+  outline-offset: 2px;
+}
+
+/* —— 滚动条（Webkit）—— */
+::-webkit-scrollbar-thumb {
+  background: var(--claude-accent) !important;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--claude-bg) !important;
+}
+
+/* —— 选中文字颜色 —— */
+::selection {
+  background: var(--claude-accent);
+  color: #fff;
+}
