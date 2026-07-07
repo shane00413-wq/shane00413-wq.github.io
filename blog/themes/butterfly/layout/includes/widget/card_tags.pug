@@ -3,7 +3,8 @@ if theme.aside.card_tags.enable
     .card-widget.card-tags
       .item-headline
         i.fas.fa-tags
-        span= _p('aside.card_tags')
+        a(href=url_for(config.tag_dir) + '/')
+          span= _p('aside.card_tags')
 
       - let { limit, orderby, order, custom_colors } = theme.aside.card_tags
       - limit = limit === 0 ? 0 : limit || 40

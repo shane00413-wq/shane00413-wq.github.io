@@ -10,8 +10,6 @@ nav:
 menu:
   首页: / || fas fa-home
   时间轴: /archives/ || fas fa-archive
-  标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
   留言板: /message/ || fas fa-comment
   照片: /Gallery/ || fas fa-images    
   友链: /link/ || fas fa-link
@@ -40,18 +38,19 @@ aside:
 
   card_author:
     enable: true
-    description: "搞机圈玩家"
+    description: "站主：谢恩"
     button:
       enable: true
       icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/xxxxxx
+      text: Github
+      link: https://github.com/shane00413-wq
 
   card_announcement:
     enable: true
     content: |
       自我介绍：<br>
-      我是谢恩，是一个搞机圈玩家。<br><br>
+      我是谢恩，是一个搞机圈玩家。<br>
+      会在这里分享各种搞机相关文章 <br> <br>
       联系方式：<br>
       QQ: 3514143296<br>
       Telegram: Shane_0413
@@ -95,9 +94,32 @@ code_blocks:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/shane.png
 
 disable_top_img: false
+index_img: null
+subtitle:
+  enable: true
+  effect: true
+  typed_option:
+    typeSpeed: 80
+    backSpeed: 40
+    backDelay: 1200
+    loop: true
+  source: false
+  sub:
+    - "顶部导航栏可快速访问首页、友链、关于页和留言板"
+    - "侧边栏可查看标签、分类、归档和最新文章"
+    - "你可以在留言板发布留言或建议"
+    - "移动端可点击右上角三条横杠展开菜单"
+    - "往下滑动即可看到最新帖子和文章列表"
+    - "这里是我的技术博客与折腾笔记"
+    - "记录手机、脚本、网络、工具的实用教程"
+    - "侧边栏里有标签、分类和归档方便查找"
+    - "每篇文章都尽量写清楚原理与操作步骤"
+    - "希望你在这里找到有用的信息和灵感"
+    - "如果想看更多内容，请继续下拉浏览"
+    - "博客内容会持续更新，欢迎常来看看"
 
 # --------------------------------------
 # 文章信息
@@ -111,7 +133,7 @@ post_meta:
     categories: true
     tags: true
 
-index_layout: 3
+index_layout: 1
 
 index_post_content:
   method: 3
@@ -187,4 +209,6 @@ giscus:
   input_position: bottom
   theme: preferred_color_scheme
   lang: zh-CN
-  
+social:
+  fas fa-envelope: mailto:shane00413@gmail.com || Email
+  fas fa-rss: /atom.xml || RSS

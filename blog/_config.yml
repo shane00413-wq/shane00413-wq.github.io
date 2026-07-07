@@ -111,4 +111,6 @@ search:
   field: post
   content: true
   format: html
-  
+feed:
+  type: atom
+  path: atom.xml

@@ -91,7 +91,7 @@ hexo.extend.helper.register('aside_categories', function (categories, options = 
 
   return `<div class="item-headline">
             <i class="fas fa-folder-open"></i>
-            <span>${this._p('aside.card_categories')}</span>
+            <a href="${categoryDir}/"><span>${this._p('aside.card_categories')}</span></a>
             ${moreButton}
           </div>
           <ul class="card-category-list${isExpand && list.result ? ' expandBtn' : ''}" id="aside-cat-list">
