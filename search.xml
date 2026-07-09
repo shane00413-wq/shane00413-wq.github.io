@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>华为使用谷歌组件办法 全机型可用</title>
-    <url>/2026/06/26/20260627/</url>
-    <content><![CDATA[<p>很多人都以为华为是不可以安装谷歌组件 其实不是的 只是无法安装原生谷歌套装 可以用第三方方案替代<br>说到第三方谷歌套件 最出名的莫过于Microg和Aurora store<br>那么该如何安装并使用呢？</p>
-<p>第一步：打开Micro G GitHub发布页面<a href="https://github.com/microg/GmsCore/releases/tag/v0.3.15.250932">https://github.com/microg/GmsCore/releases/tag/v0.3.15.250932</a><br>安装com.android.vending-84022630-hw.apk和com.google.android.gms-250932030-hw.apk 注意 一定要安装带HW的apk<br><img src="/img/20260627/github.microg.png"><br>第二步：在<a href="https://github.com/microg/GsfProxy/releases/tag/v0.1.0">https://github.com/microg/GsfProxy/releases/tag/v0.1.0</a> 内安装GsfProxy<br>第三步：安装完成后打开microg服务设置（有的机型会在桌面显示 有的不会）如果你的机型没在桌面显示 在设置-应用管理-microg服务中找到设置图标<br><img src="/img/20260627/shezhi.png"><br>进入后 点击自我检查 授予所有权限<br>并登录谷歌账号 就可以用了<br>如果想要安装play商店的软件 就可以打开Aurora store 你可以使用匿名 也可以登录谷歌账号使用<br>现在micro G已经适配chatgpt了 大部分软件都可以用</p>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>华为使用谷歌</tag>
-        <tag>鸿蒙</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>住宅IP和数据中心IP到底有什么区别？为什么有的IP一用就被封</title>
     <url>/2026/06/27/20260628/</url>
     <content><![CDATA[<p>最近折腾代理的时候发现一个挺有意思的现象，同样是”代理IP”，有的用起来畅通无阻，有的刚连上没两分钟就被各种网站风控拦下来，今天就来跟大家聊聊这背后的原因。</p>
@@ -48,6 +34,20 @@
         <tag>网络</tag>
         <tag>冷知识</tag>
         <tag>IP代理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>华为使用谷歌组件办法 全机型可用</title>
+    <url>/2026/06/26/20260627/</url>
+    <content><![CDATA[<p>很多人都以为华为是不可以安装谷歌组件 其实不是的 只是无法安装原生谷歌套装 可以用第三方方案替代<br>说到第三方谷歌套件 最出名的莫过于Microg和Aurora store<br>那么该如何安装并使用呢？</p>
+<p>第一步：打开Micro G GitHub发布页面<a href="https://github.com/microg/GmsCore/releases/tag/v0.3.15.250932">https://github.com/microg/GmsCore/releases/tag/v0.3.15.250932</a><br>安装com.android.vending-84022630-hw.apk和com.google.android.gms-250932030-hw.apk 注意 一定要安装带HW的apk<br><img src="/img/20260627/github.microg.png"><br>第二步：在<a href="https://github.com/microg/GsfProxy/releases/tag/v0.1.0">https://github.com/microg/GsfProxy/releases/tag/v0.1.0</a> 内安装GsfProxy<br>第三步：安装完成后打开microg服务设置（有的机型会在桌面显示 有的不会）如果你的机型没在桌面显示 在设置-应用管理-microg服务中找到设置图标<br><img src="/img/20260627/shezhi.png"><br>进入后 点击自我检查 授予所有权限<br>并登录谷歌账号 就可以用了<br>如果想要安装play商店的软件 就可以打开Aurora store 你可以使用匿名 也可以登录谷歌账号使用<br>现在micro G已经适配chatgpt了 大部分软件都可以用</p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>华为使用谷歌</tag>
+        <tag>鸿蒙</tag>
       </tags>
   </entry>
   <entry>
@@ -97,11 +97,11 @@
 <p>这一条路线最容易成功，也最适合积累经验。</p>
 <h2 id="继续深入的专题入口"><a href="#继续深入的专题入口" class="headerlink" title="继续深入的专题入口"></a>继续深入的专题入口</h2><p>如果你已经看完了这篇总览，下面这些内容我已经单独写成了更详细的专题文章，你可以直接点进去继续看：</p>
 <ul>
-<li><a href="/2026/07/09/2026070901-bootloader-jie-suo-xiang-jie/">Bootloader 解锁详解</a>：从为什么要解锁、不同品牌怎么解、解锁前要备份什么，到解锁后可能遇到的风险。</li>
-<li><a href="/2026/07/09/2026070902-twrp-shiyong-xiang-jie/">TWRP 使用详解</a>：怎么刷 TWRP、怎样做完整备份、如何处理 AVB 校验和分区问题。</li>
-<li><a href="/2026/07/09/2026070903-magisk-he-root-ru-men/">Magisk 和 Root 入门</a>：Magisk 是怎么工作的、怎么刷入、如何隐藏 Root、如何避免被检测到。</li>
-<li><a href="/2026/07/09/2026070904-mo-kuai-an-zhuang-yu-chang-jian-wenti/">模块安装与常见问题</a>：哪些模块适合新手、怎么判断模块是不是导致卡机、怎么排查问题。</li>
-<li><a href="/2026/07/09/2026070905-jiu-zhuan-zhi-nan/">救砖指南</a>：从卡第一屏到黑砖，分别该怎么处理，哪些情况必须找官方包和对应教程。</li>
+<li><a href="/2026/07/09/2026070901/">Bootloader 解锁详解</a>：从为什么要解锁、不同品牌怎么解、解锁前要备份什么，到解锁后可能遇到的风险。</li>
+<li><a href="/2026/07/09/2026070902/">TWRP 使用详解</a>：怎么刷 TWRP、怎样做完整备份、如何处理 AVB 校验和分区问题。</li>
+<li><a href="/2026/07/09/2026070903/">Magisk 和 Root 入门</a>：Magisk 是怎么工作的、怎么刷入、如何隐藏 Root、如何避免被检测到。</li>
+<li><a href="/2026/07/09/2026070904/">模块安装与常见问题</a>：哪些模块适合新手、怎么判断模块是不是导致卡机、怎么排查问题。</li>
+<li><a href="/2026/07/09/2026070905/">救砖指南</a>：从卡第一屏到黑砖，分别该怎么处理，哪些情况必须找官方包和对应教程。</li>
 </ul>
 <p>如果你想继续往下扩，我也可以把这些专题再继续细分成“品牌专题”“ROM 专题”“模块专题”之类的文章，然后在这里继续加入口。</p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>在真正动手前，先把工具和环境准备好，能少走很多弯路。</p>
@@ -254,7 +254,7 @@
   </entry>
   <entry>
     <title>Bootloader 解锁详解</title>
-    <url>/2026/07/09/2026070901-bootloader-jie-suo-xiang-jie/</url>
+    <url>/2026/07/09/2026070901/</url>
     <content><![CDATA[<p>很多人一听“解锁 Bootloader”就觉得很玄，其实它本质上只是把手机开机前那一层保护机制打开。你可以把它理解成：厂商给手机加了一把锁，只有你拿到钥匙，手机才允许你继续往下刷第三方 Recovery、安装 Magisk、换 ROM。</p>
 <h2 id="为什么要解锁"><a href="#为什么要解锁" class="headerlink" title="为什么要解锁"></a>为什么要解锁</h2><p>Bootloader 是手机启动前的第一道门槛。它负责判断：这台手机现在是不是被允许加载未经官方签名的系统文件。出厂时，很多手机都是锁着的，主要是为了防止用户刷错系统、刷入不安全的包，或者让设备被非法篡改。</p>
 <p>但对搞机来说，锁着反而意味着你没有自主权。解锁后，才有资格：</p>
@@ -321,7 +321,7 @@
   </entry>
   <entry>
     <title>TWRP 使用详解</title>
-    <url>/2026/07/09/2026070902-twrp-shiyong-xiang-jie/</url>
+    <url>/2026/07/09/2026070902/</url>
     <content><![CDATA[<p>TWRP 是很多新手搞机路上的第一块“好用工具”。它不只是一个 Recovery，更像一个带图形界面的系统维护中心。只要你愿意折腾，TWRP 能帮你做备份、刷包、清除缓存、恢复系统、甚至直接改分区内容。</p>
 <h2 id="TWRP-到底是什么"><a href="#TWRP-到底是什么" class="headerlink" title="TWRP 到底是什么"></a>TWRP 到底是什么</h2><p>官方 Recovery 的功能一般比较有限，主要是为了系统更新和基础恢复。TWRP 则更偏向“高级维护工具”。它的优势是：</p>
 <ul>
@@ -383,7 +383,7 @@
   </entry>
   <entry>
     <title>Magisk 和 Root 入门</title>
-    <url>/2026/07/09/2026070903-magisk-he-root-ru-men/</url>
+    <url>/2026/07/09/2026070903/</url>
     <content><![CDATA[<p>Root 这件事听起来很酷，但它真正的意义，并不是“炫技”，而是拿回系统控制权。很多人入门搞机的第一步，都是从 Magisk 开始，因为它是目前最主流、最稳定的 Root 方案。</p>
 <h2 id="什么是-Root"><a href="#什么是-Root" class="headerlink" title="什么是 Root"></a>什么是 Root</h2><p>在安卓系统里，普通用户权限是有限的。系统会限制你改很多底层内容，尤其是一些关键目录和配置文件。Root 就是把权限提到系统最顶层，让你可以对系统做更深层次的调整。</p>
 <p>拥有 Root 后，你可以做很多普通用户做不到的事，例如：</p>
@@ -446,7 +446,7 @@
   </entry>
   <entry>
     <title>模块安装与常见问题</title>
-    <url>/2026/07/09/2026070904-mo-kuai-an-zhuang-yu-chang-jian-wenti/</url>
+    <url>/2026/07/09/2026070904/</url>
     <content><![CDATA[<p>装模块是很多人进入搞机圈之后最容易上头的一步。模块看起来很神奇：一个小小的安装包，可能就能改变系统行为、去广告、优化性能、调控权限。可也正因为它太灵活，很多新手一开始就容易把系统搞乱。</p>
 <h2 id="模块到底是什么"><a href="#模块到底是什么" class="headerlink" title="模块到底是什么"></a>模块到底是什么</h2><p>模块通常是针对 Magisk 的一类扩展组件。它们不会像完整 ROM 那样替换整个系统，而是以更轻量的方式去修改系统行为。比如：</p>
 <ul>
@@ -506,7 +506,7 @@
   </entry>
   <entry>
     <title>救砖指南</title>
-    <url>/2026/07/09/2026070905-jiu-zhuan-zhi-nan/</url>
+    <url>/2026/07/09/2026070905/</url>
     <content><![CDATA[<p>搞机圈里有一句很实在的话：刷机不怕，怕的是你不知道什么时候该停。所谓“救砖”，简单说就是：当系统已经出现严重问题时，如何把手机从“半死不活”状态拉回来。</p>
 <h2 id="先说结论"><a href="#先说结论" class="headerlink" title="先说结论"></a>先说结论</h2><p>救砖最重要的不是“急着试”，而是“先判断问题，再选对方法”。不同的情况，对应的处理方式完全不同。很多时候，最简单的恢复方法，反而比硬刷更有效。</p>
 <h2 id="情况一：卡第一屏、反复重启"><a href="#情况一：卡第一屏、反复重启" class="headerlink" title="情况一：卡第一屏、反复重启"></a>情况一：卡第一屏、反复重启</h2><p>这是最常见的“轻度砖”情况。一般是系统启动过程中出现了异常，比如模块冲突、刷入包不完整、系统文件损坏。你可以先尝试：</p>
