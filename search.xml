@@ -51,57 +51,6 @@
       </tags>
   </entry>
   <entry>
-    <title>搞机圈入门</title>
-    <url>/2026/07/05/20260705/</url>
-    <content><![CDATA[<p>本文写给完全没接触过搞机的人 目的是把入门要走的完整流程理清楚 从解锁BL 刷Recovery 获取Root 到装模块 出问题怎么救砖 每一步该干什么 容易踩什么坑</p>
-<h2 id="搞机到底是干什么的"><a href="#搞机到底是干什么的" class="headerlink" title="搞机到底是干什么的"></a>搞机到底是干什么的</h2><p>搞机说白了就是拿回系统的控制权 把厂商加在系统里的限制解除 由自己决定手机里留什么 屏蔽什么 具体能做到的事 删掉应用商店等系统自带的组件 屏蔽微信这类App读取你的已安装应用列表 用Root级模块实现全局去广告不用每个App单独设置 用应用数据备份换机不用重新登录账号 解除厂商对处理器帧率的限制</p>
-<h2 id="先搞懂几个概念"><a href="#先搞懂几个概念" class="headerlink" title="先搞懂几个概念"></a>先搞懂几个概念</h2><p>后面步骤会反复用到这些词 先有个印象 不用死记</p>
-<p><strong>分区</strong>：手机存储被划成很多区域 各管各的 boot存内核和启动用的ramdisk 系统靠这个启动 system是系统本身的文件 data是你装的App和产生的数据 这也是为什么解BL和双清都会清空这里 recovery是一个独立的小系统 专门用来做恢复和刷机 vendor放厂商相关的驱动文件 vbmeta存的是校验信息 决定开机时要不要检查系统完整性 后面刷TWRP遇到的校验失败问题 根源就在这 现在的手机一般是虚拟AB分区 传统的AB分区会占用双倍空间 </p>
-<p><strong>BL（Bootloader）</strong>：系统启动前先跑的那一层 决定这台手机允不允许被刷入没有官方签名的系统 出厂状态下BL是锁着的 只能刷官方认证过的完整包 解BL就是把这把锁打开 打开之后才有资格刷第三方Recovery 刷别的ROM 装Root 注意解BL不等于Root 只是拿到了”允许折腾”的资格 不是已经折腾完了</p>
-<p><strong>Root</strong>：安卓给普通用户的权限很有限 很多目录连读都读不了 Root就是拿到系统最高权限 拿到之后才能做真正底层的操作 比如全局去广告 藏应用列表 改系统文件 现在主流是用Magisk这种方案 不直接改system分区 只在启动时注入 相对好维护也好隐藏 老一代的做法是直接改system分区 现在基本没人用了</p>
-<p><strong>线刷和卡刷</strong>：两种完全不同的刷机方式 线刷是电脑通过数据线直接给手机刷东西 常见的是用Fastboot 或者高通的EDL（也就是常说的9008模式）刷完整的官方包 电脑主导整个过程 卡刷是手机自己刷自己 把要刷的zip包（可能是ROM 可能是Magisk 也可能是某个模块）放进手机存储 进Recovery点Install选中刷进去 不需要电脑参与 官方Recovery一般不支持卡刷第三方包 只能刷官方签名的升级包 这也是为什么要装TWRP这种第三方Recovery</p>
-<p><strong>第三方Recovery</strong>：官方Recovery功能很有限 基本只能双清和刷官方升级包 TWRP是目前最常见的第三方Recovery 触屏图形界面 能刷任意来源的zip包 能完整备份分区 能用文件管理器直接操作手机存储 前面说的卡刷Magisk 删模块 备份系统 全靠它</p>
-<p><strong>9008模式</strong>：高通处理器专属的紧急下载模式（EDL） 正常情况用不上 只有设备已经进不了Recovery 进不了Fastboot 彻底”黑砖”的时候才用 进入之后电脑用专用工具直接对底层存储写入 相当于跳过整个系统做硬件级别的刷写 是救砖的最后手段 联发科平台对应SP Flash Tool这一套 不叫9008 作用类似</p>
-<p><strong>ROM</strong>：手机运行的完整系统包 出厂自带的叫官方ROM 比如MIUI ColorOS 厂商在AOSP（安卓开源项目）基础上加了自己的定制界面和功能 除了官方ROM 搞机圈还有大量第三方定制ROM 一类是深度定制 界面功能改动很大 另一类叫类原生 基本保留谷歌原生安卓的样子 只做性能和细节优化 不塞多余功能 类原生里比较主流的有LineageOS(历史最久 支持机型最多) PixelExperience和PixelOS(尽量还原Pixel原生体验) crDroid ArrowOS 特点是干净 流畅 广告和预装应用少 但对应机型有没有适配要提前确认 不是所有机型都有人做</p>
-<p><strong>哪些牌子适合搞 哪些别碰</strong>：谷歌Pixel解BL最简单 官方原生支持最好 社区资源最多 类原生ROM基本都优先适配Pixel 是搞机圈公认最友好的选择 一加解BL流程简单 社区活跃 小米国际版和国行流程差不多 都要等7天 但胜在社区资源丰富 教程最多 遇到问题基本都能搜到 vivo官方基本不开放解锁申请 大部分机型没有正规渠道 不建议 华为和荣耀不少机型解BL接口已经关闭 能不能解要先查具体型号 三星能解 但会触发Knox熔断 Samsung Pay这类功能会永久失效 谨慎选择</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>硬件上一根原装数据线 杂牌线在刷写过程中容易中途断连 一旦刷写中断很可能直接变砖 一台电脑 建议Windows 官方和第三方的刷机工具在Windows下最全 一台不是主力机的测试机</p>
-<p>软件方面提前下好 platform-tools（Google官方ADB和Fastboot工具包）解压后放系统盘根目录方便调用 对应机型的TWRP镜像和驱动 去XDA Developers或者酷安找 注意型号要完全对上 型号刷错Recovery可能导致设备无法开机 Magisk只从GitHub官方仓库下 不要下第三方改过的版本 另外提前存一份官方原厂ROM或者Fastboot包 后面救砖和提取boot.img都用得上</p>
-<h2 id="第一步-解锁Bootloader"><a href="#第一步-解锁Bootloader" class="headerlink" title="第一步 解锁Bootloader"></a>第一步 解锁Bootloader</h2><p>各家做法不一样 小米要在开发者选项里申请 官方有强制等待期 目前是7天左右 期间账号要绑定手机号并保持登录 没有捷径 一加 OPPO Google Pixel这几个简单 开发者选项开OEM解锁 进Fastboot模式后敲一句fastboot oem unlock（部分机型是fastboot flashing unlock）就行 vivo基本没有正规解锁渠道 大部分机型官方不开放申请 不建议在这个牌子上折腾 三星能解锁 但会触发Knox熔断 Knox Warranty Void位一旦置位就是永久的 Samsung Pay这类依赖安全校验的功能会直接失效 而且没法恢复出厂撤销 解不解锁自己权衡</p>
-<p>解锁会清空手机所有数据 照片和聊天记录动手前一定先拷出来</p>
-<h2 id="第二步-刷TWRP"><a href="#第二步-刷TWRP" class="headerlink" title="第二步 刷TWRP"></a>第二步 刷TWRP</h2><p>下载对应机型的img文件 手机进Fastboot模式 电脑上敲fastboot flash recovery twrp_xxxx.img 再敲fastboot reboot recovery</p>
-<p>部分用了AVB2.0校验的新机型 刷完第三方Recovery之后可能因为验证失败进不去Data分区 TWRP里看到的存储大小不对或者解密不了 遇到这种情况通常需要额外刷一个禁用dm-verity和vbmeta校验的补丁 具体方法看对应机型的XDA刷机帖</p>
-<p>进TWRP之后先别急着刷任何包 点Backup 把System Data Boot都勾上 完整备份一次 备份文件一定要用ADB或者读卡的方式转存到电脑上 只留在手机本地存储没有意义 后面双清的时候会一起被清掉 这一步以后你会感谢自己</p>
-<h2 id="第三步-刷Magisk"><a href="#第三步-刷Magisk" class="headerlink" title="第三步 刷Magisk"></a>第三步 刷Magisk</h2><p>如果已经有TWRP 直接把Magisk的zip包传进手机 TWRP里点Install刷进去就行</p>
-<p>如果没有TWRP（现在很多A&#x2F;B分区机型是这种情况） 就从官方ROM里提取对应版本的boot.img 用手机上的Magisk App选择并修补这个文件 生成的patched_boot.img拷回电脑 敲fastboot flash boot magisk_patched_xxx.img 重启后打开Magisk App 能看到版本号就说明成了</p>
-<p>如果你的App有Play完整性检测或者银行风控这类校验 后面还得配合Zygisk和DenyList（老版本叫Hide列表）把Root痕迹藏起来 不然可能直接拒绝运行</p>
-<h2 id="装模块"><a href="#装模块" class="headerlink" title="装模块"></a>装模块</h2><p>一开始别装太多 先来这几个练手：</p>
-<ul>
-<li>Shamiko 配合Zygisk藏Root痕迹 是现在应付Play完整性检测的主流方案</li>
-<li>LSPosed 模块运行框架 后面很多好用的功能模块都靠它加载 需要先在Magisk里开Zygisk</li>
-<li>Hide My Applist 用来屏蔽App读取你的已安装列表</li>
-<li>Scene 4这类工具 用来调CPU调度和帧率</li>
-<li>App Ops 做更细的权限管理</li>
-</ul>
-<p>模块都在Magisk App里装 装完要重启才生效 建议一次只装一两个 确认系统能正常开机再继续 一次装太多出问题很难判断是哪个模块导致的 严重的话会卡在开机动画 只能重刷</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>adb devices看设备连没连上 adb reboot bootloader进Fastboot adb reboot recovery进Recovery fastboot devices在Fastboot模式下看连接 fastboot getvar all看设备详细信息 包括解锁状态和分区信息 排查刷机失败原因经常用得上 fastboot flash recovery xxx.img刷Recovery分区 fastboot flash boot xxx.img刷Boot分区 fastboot reboot重启 adb logcat看实时日志 出问题第一时间查这个</p>
-<h2 id="救砖"><a href="#救砖" class="headerlink" title="救砖"></a>救砖</h2><p>这个不学迟早吃亏</p>
-<p>卡第一屏或者反复重启开机动画 强制关机进Recovery双清 再重刷完整ROM 如果是装了新模块之后才出现的问题 进TWRP文件管理器 把&#x2F;data&#x2F;adb&#x2F;modules&#x2F;里对应模块的文件夹删掉就行 不用重刷整个系统</p>
-<p>能进Fastboot但进不了Recovery 用官方Fastboot包线刷 或者重刷TWRP之后用之前存的System和Boot备份恢复</p>
-<p>完全黑屏什么都不认（俗称黑砖） 高通平台找9008 Emergency Download模式 联发科平台用SP Flash Tool配合官方Scatter文件刷 这种情况建议先去酷安搜对应机型的救砖帖 严格按步骤来 顺序刷错可能把分区表也搞坏</p>
-<h2 id="几点建议"><a href="#几点建议" class="headerlink" title="几点建议"></a>几点建议</h2><p>动手之前先搜一下有没有人遇到过同样的问题 绝大部分常见坑之前都有人踩过</p>
-<p>备份这件事说几遍都不为过 每次大动作之前都要做</p>
-<p>救砖的经验只能靠实际操作攒 建议在测试机上完整走一遍 包括故意制造一次可控的故障再自己修好</p>
-<p>建议先拿一台闲置手机跟着走一遍 有具体机型的问题欢迎留言</p>
-]]></content>
-      <categories>
-        <category>入门教程</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
-        <tag>刷机</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>play商店上面下载的telegram竟然不是原版？</title>
     <url>/2026/06/23/telegram/</url>
     <content><![CDATA[<p>大家平时下载telegram都是从哪里下载的？play商店还是telegram官网？ 有没有人发现 telegram官网（telegram.org）上面下载的TG图标和play商店上的不同？<br>这是在官网下载的TG的图标：<br><img src="/img/Telegram_Web.png"><br>可以看到 是蓝色背景 飞机是白色的<br>而在play商店下载到的图标是这样的：<br><img src="/img/Telegram_play.png"><br>中间是蓝底圆形和白色飞机 外边背景是白色的<br>这里将官网版本称作为A版本 play商店版本称作为B版本<br>A安装包版本是可以在telegram官方安装包频道<a href="https://t.me/TAndroidAPK">https://t.me/TAndroidAPK</a> 内获取的 所以A版本才是官方版本<br>据本人朋友苏楼龙所说 A版本是Web的客户端 B版本是改过的 因为play商店审核很严格 有些东西是要改的<br>本人发现AB版本的某些UI也是不同的 A版本的UI更像是Web里面的<br>所以我推测 telegram.org或者官方安装包频道内下载的telegram是官方版本 而play商店版本是根据play商店的审核机制修改过的</p>
@@ -123,6 +72,199 @@
       </categories>
       <tags>
         <tag>瞎写的</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搞机圈入门</title>
+    <url>/2026/07/05/20260705/</url>
+    <content><![CDATA[<p>本文写给完全没接触过搞机的人，重点不是把“刷机”讲得多玄，而是把“新手到底该怎么一步一步走、每一步为什么要这么做、容易踩哪些坑”讲清楚。搞机的核心，实际上就是让你自己掌控手机：解除厂商限制、替换系统组件、提升体验、甚至在必要时把系统修回正常。只要你先把流程和风险搞明白，很多事情其实并没有想象中那么吓人。</p>
+<h2 id="搞机到底是干什么的"><a href="#搞机到底是干什么的" class="headerlink" title="搞机到底是干什么的"></a>搞机到底是干什么的</h2><p>搞机说白了，就是拿回系统的控制权。厂商出厂时，系统里很多功能都被锁死了，或者为了“更稳”“更省流量”“更好卖广告”，把一些入口和权限都做了限制。你能做的事情，通常包括：</p>
+<ul>
+<li>去掉系统自带的某些预装应用</li>
+<li>屏蔽某些应用读取你的已安装应用列表</li>
+<li>做全局广告屏蔽，不用每个应用单独设置</li>
+<li>用更灵活的权限管理控制哪些应用能调什么</li>
+<li>备份应用数据，换机时省去重复登录</li>
+<li>解除一些厂商对性能、帧率、功耗的限制</li>
+</ul>
+<p>这类操作看起来很“折腾”，但本质上是让手机更符合你自己的使用习惯。真正的重点不是“为了刷机而刷机”，而是“用更自由的方式使用手机”。</p>
+<h2 id="先搞懂几个概念"><a href="#先搞懂几个概念" class="headerlink" title="先搞懂几个概念"></a>先搞懂几个概念</h2><p>后面步骤会反复用到这些词，先有个印象，不用死记，关键是知道它们分别在解决什么问题。</p>
+<p><strong>分区</strong>：手机存储不是一整块，而是被分成很多区域。比如 boot 分区负责启动时使用的内核和启动脚本，system 分区放系统文件，data 分区放你安装的应用和个人数据，recovery 是一个单独的小系统，专门用来恢复和刷机。很多人遇到的问题，实际上都和分区有关：如果刷错分区，系统可能直接进不去。</p>
+<p><strong>BL（Bootloader）</strong>：系统启动前先跑的那一层。它决定手机能不能接受未被官方签名验证过的系统镜像。出厂时一般是锁着的，解锁之后才能刷入第三方 Recovery、第三方 ROM、Magisk 等内容。注意，解 BL 不等于 Root，它只是打开了“允许折腾”的门。</p>
+<p><strong>Root</strong>：安卓系统默认对普通用户权限有限，很多底层目录并不能随便改。Root 就是拿到系统的最高权限，这样才能做更底层的操作。主流方案是 Magisk，它不会直接改动 system 分区，而是通过启动时注入的方式实现，这样更稳，也更容易维护。</p>
+<p><strong>线刷和卡刷</strong>：</p>
+<ul>
+<li>线刷是通过电脑把文件直接写进手机分区，常见于 Fastboot 或 EDL&#x2F;9008 模式。</li>
+<li>卡刷是把安装包放进手机里，进入 Recovery 后从界面里刷进去。常见的有刷入 Magisk 压缩包、刷入某个模块、刷入第三方 ROM 的 zip 包。</li>
+</ul>
+<p><strong>第三方 Recovery</strong>：官方 Recovery 的功能很有限，很多时候只能刷官方升级包。TWRP 是最常见的第三方 Recovery，除了能刷各种 zip 包，还能做完整备份、文件管理、清除缓存和系统分区等操作。</p>
+<p><strong>9008 模式</strong>：高通平台上的一种紧急下载模式，通常只有在设备进不了 Recovery、进不了 Fastboot，甚至看起来像“完全黑砖”时才会用到。它是救砖手段里最狠的一个，属于最后一步。</p>
+<p><strong>ROM</strong>：手机运行的完整系统包。官方 ROM 是厂商自己维护的系统；第三方 ROM 则是社区维护的系统，有些更干净，有些更偏向原生体验。新手通常先从“类原生”开始，因为它比满是厂商定制的系统更容易掌控。</p>
+<p><strong>哪些牌子适合搞，哪些别碰</strong>：</p>
+<ul>
+<li>Google Pixel：最友好，资料最多，适合新手。</li>
+<li>一加：解锁和教程都比较友好。</li>
+<li>小米：流程也比较成熟，但有等待期。</li>
+<li>vivo：官方开放度通常不高，不太适合新手。</li>
+<li>华为&#x2F;荣耀：很多机型解锁难度高，甚至已经没有官方接口。</li>
+<li>三星：能解，但会触发 Knox 熔断，某些功能会永久失效。</li>
+</ul>
+<h2 id="先确定一个适合自己的路线"><a href="#先确定一个适合自己的路线" class="headerlink" title="先确定一个适合自己的路线"></a>先确定一个适合自己的路线</h2><p>新手最容易犯的错误，不是“不会刷”，而是“想一步到位”。建议不要一上来就想着装一大堆模块、刷很多 ROM。最稳的入门路线是：</p>
+<ol>
+<li>先确认机型是否适合解锁。</li>
+<li>备份好数据，确保没有重要内容丢失。</li>
+<li>先把 Bootloader 解开。</li>
+<li>刷入第三方 Recovery。</li>
+<li>用 Recovery 做一次完整备份。</li>
+<li>再考虑 Root 和模块。</li>
+</ol>
+<p>这一条路线最容易成功，也最适合积累经验。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>在真正动手前，先把工具和环境准备好，能少走很多弯路。</p>
+<h3 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h3><ul>
+<li>一根可靠的数据线，尽量用原装或者质量好的线。杂牌线在刷写过程中容易断开，一旦中断，可能直接导致设备变砖。</li>
+<li>一台电脑，Windows 下的刷机工具和驱动最齐全，尤其是新手。</li>
+<li>一台不是主力机的测试机，最好不要拿你最重要的手机来做第一台实验机。</li>
+</ul>
+<h3 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h3><ul>
+<li>下载 Google 官方的 platform-tools，包含 ADB 和 Fastboot。</li>
+<li>下载对应机型的 TWRP 镜像和驱动。</li>
+<li>下载 Magisk 的官方安装包，尽量从 GitHub 官方仓库获取。</li>
+<li>提前准备官方原厂 ROM 或 Fastboot 包，后面救砖时非常有用。</li>
+</ul>
+<h3 id="资料准备"><a href="#资料准备" class="headerlink" title="资料准备"></a>资料准备</h3><ul>
+<li>先去 XDA、酷安、机型对应的刷机论坛搜一下你的机型。</li>
+<li>看完教程后再动手，尤其是你机型是否有特殊限制、是否需要额外刷补丁。</li>
+<li>注意型号要完全对上，刷错 Recovery 很可能导致设备无法开机。</li>
+</ul>
+<h2 id="第一步：解锁-Bootloader"><a href="#第一步：解锁-Bootloader" class="headerlink" title="第一步：解锁 Bootloader"></a>第一步：解锁 Bootloader</h2><p>这是整个流程的第一步，也是最关键的一步。解锁 Bootloader 之后，手机才有资格接受第三方 Recovery、第三方 ROM 以及 Root。</p>
+<h3 id="这一步一般怎么做"><a href="#这一步一般怎么做" class="headerlink" title="这一步一般怎么做"></a>这一步一般怎么做</h3><p>不同品牌的方式不同：</p>
+<ul>
+<li>小米：通常要在开发者选项里申请解锁，官方一般会有等待期，常见的是 7 天左右。</li>
+<li>一加、OPPO、Google Pixel：通常比较简单，开启 OEM 解锁后，再进入 Fastboot 模式执行命令即可。</li>
+<li>vivo：很多机型官方不开放正规解锁渠道，不适合新手。</li>
+<li>三星：虽然能解，但会触发 Knox 熔断，某些功能会永久失效。</li>
+</ul>
+<h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><p>进入 Fastboot 模式后，常见命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem unlock</span><br></pre></td></tr></table></figure>
+
+<p>有些机型使用的是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flashing unlock</span><br></pre></td></tr></table></figure>
+
+<h3 id="这一步的风险"><a href="#这一步的风险" class="headerlink" title="这一步的风险"></a>这一步的风险</h3><ul>
+<li>解锁会清空手机数据。</li>
+<li>之前的照片、聊天记录、应用配置都会被清掉。</li>
+<li>如果你没有备份，后果是很难挽回的。</li>
+</ul>
+<p>所以在开始前，一定先把重要数据转移出去。</p>
+<h2 id="第二步：刷入第三方-Recovery"><a href="#第二步：刷入第三方-Recovery" class="headerlink" title="第二步：刷入第三方 Recovery"></a>第二步：刷入第三方 Recovery</h2><p>解锁完成之后，下一步通常是刷入 TWRP。它相当于给手机装一个“更强的系统修复入口”。</p>
+<h3 id="具体做法"><a href="#具体做法" class="headerlink" title="具体做法"></a>具体做法</h3><ol>
+<li>下载对应机型的 TWRP 镜像文件。</li>
+<li>手机进入 Fastboot 模式。</li>
+<li>电脑上执行：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash recovery twrp_xxxx.img</span><br><span class="line">fastboot reboot recovery</span><br></pre></td></tr></table></figure>
+
+<h3 id="这一步要注意什么"><a href="#这一步要注意什么" class="headerlink" title="这一步要注意什么"></a>这一步要注意什么</h3><ul>
+<li>机型和文件名必须一一对应，不要随便拿别的机型的镜像。</li>
+<li>有些新机型用了 AVB2.0 校验，刷完 TWRP 后可能会遇到“进不去 Data 分区”“存储识别异常”的情况。</li>
+<li>这时通常需要额外刷一个禁用 dm-verity 或 vbmeta 校验的补丁，具体方法请看对应机型的 XDA 贴子。</li>
+</ul>
+<h3 id="进-TWRP-后建议先做的事"><a href="#进-TWRP-后建议先做的事" class="headerlink" title="进 TWRP 后建议先做的事"></a>进 TWRP 后建议先做的事</h3><p>进到 TWRP 以后，先不要急着刷任何包。先做一次完整备份，建议备份以下分区：</p>
+<ul>
+<li>System</li>
+<li>Data</li>
+<li>Boot</li>
+</ul>
+<p>备份文件要转存到电脑上，而不是只留在手机内部。因为后面你一旦双清、重刷、换 ROM，手机里原来的备份很可能就没了。</p>
+<h2 id="第三步：获取-Root"><a href="#第三步：获取-Root" class="headerlink" title="第三步：获取 Root"></a>第三步：获取 Root</h2><p>有了 TWRP 之后，下一步一般就是给系统打 Root。最常见、最稳定的方式是 Magisk。</p>
+<h3 id="如果你已经有-TWRP"><a href="#如果你已经有-TWRP" class="headerlink" title="如果你已经有 TWRP"></a>如果你已经有 TWRP</h3><p>把 Magisk 的 zip 包放进手机里，然后在 TWRP 里点 Install 刷进去即可。</p>
+<h3 id="如果你没有-TWRP，或者机型是-A-B-分区"><a href="#如果你没有-TWRP，或者机型是-A-B-分区" class="headerlink" title="如果你没有 TWRP，或者机型是 A&#x2F;B 分区"></a>如果你没有 TWRP，或者机型是 A&#x2F;B 分区</h3><p>很多新机型不适合直接用传统 Recovery 的方式。此时通常需要：</p>
+<ol>
+<li>从官方 ROM 里提取对应版本的 boot.img。</li>
+<li>用 Magisk App 修补这个文件。</li>
+<li>生成 patched_boot.img。</li>
+<li>用 Fastboot 刷入修补后的 boot 镜像。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash boot magisk_patched_xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>重启后，打开 Magisk App，看是否能正常识别版本号。如果能，说明 Root 基本成功了。</p>
+<h3 id="额外说明"><a href="#额外说明" class="headerlink" title="额外说明"></a>额外说明</h3><p>如果你使用某些 App 做 Play 完整性检测，或者银行类应用做风控，后面还可能需要配合 Zygisk 和 DenyList（旧版叫 Hide 列表）来隐藏 Root 痕迹，否则可能直接被拦截。</p>
+<h2 id="装模块：先少后多"><a href="#装模块：先少后多" class="headerlink" title="装模块：先少后多"></a>装模块：先少后多</h2><p>Root 之后，很多人会忍不住开始装各种模块。这个阶段最容易出问题，因为“模块太多、问题太杂”。建议新手一开始只装最基础的几个：</p>
+<ul>
+<li>Shamiko：配合 Zygisk 隐藏 Root 痕迹，适合对抗 Play 完整性检测。</li>
+<li>LSPosed：模块运行框架，后面很多功能模块都需要依赖它。</li>
+<li>Hide My Applist：屏蔽应用读取你的已安装应用列表。</li>
+<li>Scene 4：用于调度和性能优化。</li>
+<li>App Ops：做更细的权限控制。</li>
+</ul>
+<p>模块安装后通常要重启才会生效。建议一次只装一两个，确认系统正常运行后再继续。因为一旦系统卡在开机动画，问题定位会非常困难。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>新手最应该先熟悉下面这些命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<p>查看设备是否连接成功。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br></pre></td></tr></table></figure>
+
+<p>重启到 Fastboot 模式。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reboot recovery</span><br></pre></td></tr></table></figure>
+
+<p>重启到 Recovery 模式。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot devices</span><br></pre></td></tr></table></figure>
+
+<p>查看 Fastboot 模式下的设备连接情况。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar all</span><br></pre></td></tr></table></figure>
+
+<p>查看设备的详细信息，包括解锁状态、分区信息等。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash recovery xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>刷入 Recovery 镜像。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash boot xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>刷入 boot 镜像。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb logcat</span><br></pre></td></tr></table></figure>
+
+<p>如果系统出问题，先看日志，很多问题一眼就能看到。</p>
+<h2 id="救砖：这一步必须提前知道"><a href="#救砖：这一步必须提前知道" class="headerlink" title="救砖：这一步必须提前知道"></a>救砖：这一步必须提前知道</h2><p>搞机不是只会“变强”，也可能会“变砖”。所以救砖知识一定要提前了解。</p>
+<h3 id="情况一：卡第一屏、反复重启"><a href="#情况一：卡第一屏、反复重启" class="headerlink" title="情况一：卡第一屏、反复重启"></a>情况一：卡第一屏、反复重启</h3><p>这种情况最常见。先尝试：</p>
+<ol>
+<li>强制关机。</li>
+<li>进入 Recovery。</li>
+<li>做一次清除缓存或双清。</li>
+<li>如果是装模块后出现的问题，进入 TWRP 后把 <code>/data/adb/modules/</code> 下面对应模块文件夹删掉。</li>
+</ol>
+<h3 id="情况二：能进-Fastboot，但进不了-Recovery"><a href="#情况二：能进-Fastboot，但进不了-Recovery" class="headerlink" title="情况二：能进 Fastboot，但进不了 Recovery"></a>情况二：能进 Fastboot，但进不了 Recovery</h3><p>这时通常可以：</p>
+<ul>
+<li>用官方 Fastboot 包线刷回原厂系统。</li>
+<li>或者重新刷入 TWRP，然后用之前备份的 System 和 Boot 恢复。</li>
+</ul>
+<h3 id="情况三：完全黑屏、啥都不认"><a href="#情况三：完全黑屏、啥都不认" class="headerlink" title="情况三：完全黑屏、啥都不认"></a>情况三：完全黑屏、啥都不认</h3><p>这就属于“黑砖”了。常见的处理方式：</p>
+<ul>
+<li>高通平台：用 9008 Emergency Download 模式配合官方工具救砖。</li>
+<li>联发科平台：用 SP Flash Tool 配合官方 Scatter 文件刷回。</li>
+</ul>
+<p>这种操作风险非常高，建议先去对应机型的刷机贴一个个照着做，不要随手乱试。</p>
+<h2 id="新手最容易踩的坑"><a href="#新手最容易踩的坑" class="headerlink" title="新手最容易踩的坑"></a>新手最容易踩的坑</h2><ol>
+<li>不备份就乱动。</li>
+<li>机型和镜像不对应。</li>
+<li>刷错分区。</li>
+<li>一上来就装太多模块。</li>
+<li>觉得“我能看懂教程就能照着做”，实际很多机型有特殊限制。</li>
+<li>没有保存官方包，救砖时寸步难行。</li>
+</ol>
+<h2 id="最后给新手的建议"><a href="#最后给新手的建议" class="headerlink" title="最后给新手的建议"></a>最后给新手的建议</h2><p>搞机最重要的不是“把手机玩坏”，而是“在可控的范围内不断学习”。最稳妥的方式是：</p>
+<ul>
+<li>先用一台旧手机试一遍。</li>
+<li>每次大动作前都备份。</li>
+<li>先学会看官方包和日志，再去折腾模块。</li>
+<li>遇到问题先去搜对应机型的教程，而不是盲目尝试。</li>
+</ul>
+<p>如果你是第一次接触搞机，建议先把“解锁、刷 Recovery、备份、Root”这几步真正走熟，再去玩模块和 ROM。这样你会更快掌握这条路，也更不容易踩坑。</p>
+]]></content>
+      <categories>
+        <category>入门教程</category>
+      </categories>
+      <tags>
+        <tag>搞机</tag>
+        <tag>刷机</tag>
       </tags>
   </entry>
 </search>
